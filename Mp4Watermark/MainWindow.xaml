@@ -25,5 +25,6 @@
                    ScrollViewer.VerticalScrollBarVisibility="Auto"
                    ScrollViewer.CanContentScroll="True"
         />
+        <ProgressBar Name="pd" HorizontalAlignment="Left" Height="38" Margin="16,648,0,0" VerticalAlignment="Top" Width="496" Minimum="0" Maximum="100"/>
     </Grid>
 </Window>

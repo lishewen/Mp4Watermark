@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,8 @@ namespace Mp4Watermark
     /// </summary>
     public partial class MainWindow : Window
     {
+        TimeOnly duration, time;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -78,15 +81,44 @@ namespace Mp4Watermark
             // 捕捉进程输出信息
             ffmpegProcess.ErrorDataReceived += (sender, e) =>
             {
-                if (e.Data != null && e.Data.StartsWith("frame="))
+                if (e.Data == null)
+                {
+                    return;
+                }
+                Match durationMatch = GetDurationRegex().Match(e.Data);
+                if (durationMatch.Success)
+                {
+                    duration = TimeOnly.Parse(durationMatch.Groups["duration"].Value);
+                }
+                Match timeMatch = GetTimeRegex().Match(e.Data);
+                if (timeMatch.Success)
+                {
+                    try
+                    {
+                        time = TimeOnly.Parse(timeMatch.Groups["time"].Value);
+                    }
+                    catch
+                    {
+                        return;
+                    }
+                    Dispatcher.InvokeAsync(new Action(() =>
+                    {
+                        pd.Value = time.ToTimeSpan().TotalSeconds / duration.ToTimeSpan().TotalSeconds * 100;
+                    }));
+                }
+                if (e.Data.StartsWith("frame="))
                 {
                     Dispatcher.InvokeAsync(new Action(() =>
                     {
                         txt_result.Text = e.Data.Trim() + "\n";
                     }));
                 }
-                if (e.Data != null && e.Data.StartsWith("[out#0/mp4 @"))
+                if (e.Data.StartsWith("[out#0/mp4 @"))
                 {
+                    Dispatcher.InvokeAsync(new Action(() =>
+                    {
+                        pd.Value = 100;
+                    }));
                     MessageBox.Show("添加水印成功！");
                 }
             };
@@ -97,5 +129,10 @@ namespace Mp4Watermark
             // 等待进程完成
             // ffmpegProcess.WaitForExit();
         }
+
+        [GeneratedRegex(@"\sDuration: (?<duration>\S+)")]
+        private static partial Regex GetDurationRegex();
+        [GeneratedRegex(@"\stime=(?<time>\S+)")]
+        private static partial Regex GetTimeRegex();
     }
 }
