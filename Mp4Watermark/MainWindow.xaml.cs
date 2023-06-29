@@ -111,7 +111,6 @@ namespace Mp4Watermark
                     Dispatcher.InvokeAsync(new Action(() =>
                     {
                         txt_result.Text = e.Data.Trim() + "\n";
-                        btn_run.IsEnabled = false;
                     }));
                 }
                 if (e.Data.StartsWith("[out#0/mp4 @"))
@@ -119,7 +118,6 @@ namespace Mp4Watermark
                     Dispatcher.InvokeAsync(new Action(() =>
                     {
                         pd.Value = 100;
-                        btn_run.IsEnabled = true;
                     }));
                     MessageBox.Show("添加水印成功！");
                 }

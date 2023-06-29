@@ -20,11 +20,11 @@
 
         <Button x:Name="btn_run" Content="添加水印" HorizontalAlignment="Left" Margin="16,86,0,0" VerticalAlignment="Top" Click="btn_run_Click" Height="50" Width="70"/>
 
-        <TextBlock x:Name="txt_result" Margin="16,621,10,110" TextWrapping="Wrap" Text="结果信息"
+        <TextBlock x:Name="txt_result" Margin="13,581,19,110" TextWrapping="Wrap" Text="结果信息"
                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
                    ScrollViewer.VerticalScrollBarVisibility="Auto"
                    ScrollViewer.CanContentScroll="True"
         />
-        <ProgressBar Name="pd" HorizontalAlignment="Left" Height="38" Margin="16,648,0,0" VerticalAlignment="Top" Width="998" Minimum="0" Maximum="100"/>
+        <ProgressBar Name="pd" HorizontalAlignment="Left" Height="38" Margin="16,648,0,0" VerticalAlignment="Top" Width="989" Minimum="0" Maximum="100"/>
     </Grid>
 </Window>
