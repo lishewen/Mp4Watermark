@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mp4Watermark"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Mp4水印工具——算神工作室" Height="768" Width="1024">
     <Grid>
+        <Label Content="源视频：" HorizontalAlignment="Left" Margin="16,7,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_input" HorizontalAlignment="Left" Margin="74,11,0,0" Text="input.mp4" VerticalAlignment="Top" Width="200"/>
+        <Button Content="浏览..." HorizontalAlignment="Left" Margin="279,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
+        <Label Content="输出视频：" HorizontalAlignment="Left" Margin="16,31,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_output" HorizontalAlignment="Left" Margin="86,35,0,0" Text="output.mp4" VerticalAlignment="Top" Width="188"/>
+        <Button Content="浏览..." HorizontalAlignment="Left" Margin="279,34,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+
+        <Label Content="水印文字：" HorizontalAlignment="Left" Margin="16,56,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_water" HorizontalAlignment="Left" Margin="86,60,0,0" Text="发给覃钊琼" VerticalAlignment="Top" Width="230"/>
+
+        <Button Content="添加水印" HorizontalAlignment="Left" Margin="16,86,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="321,0,0,0">
+            <TextBlock x:Name="txt_result" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Height="733" Width="693"/>
+        </ScrollViewer>
     </Grid>
 </Window>
