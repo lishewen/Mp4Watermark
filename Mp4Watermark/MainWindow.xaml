@@ -20,8 +20,10 @@
 
         <Button Content="添加水印" HorizontalAlignment="Left" Margin="16,86,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="321,0,0,0">
-            <TextBlock x:Name="txt_result" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Height="733" Width="693"/>
-        </ScrollViewer>
+        <TextBlock x:Name="txt_result" Margin="321,0,0,0" TextWrapping="Wrap" Text="" Height="733" Width="693"
+                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto"
+                   ScrollViewer.CanContentScroll="True"
+        />
     </Grid>
 </Window>

@@ -75,11 +75,6 @@ namespace Mp4Watermark
             ffmpegProcess.StartInfo.UseShellExecute = false;
             ffmpegProcess.StartInfo.CreateNoWindow = true;
 
-            ffmpegProcess.Exited += (sender, e) =>
-            {
-                MessageBox.Show("添加水印成功！");
-            };
-
             // 捕捉进程输出信息
             ffmpegProcess.ErrorDataReceived += (sender, e) =>
             {
